@@ -1,0 +1,69 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                 Champion MT4                      |
+//|                       Developer: Forex Robot Easy Team            |
+//|                          Website: forexroboteasy.com              |
+//+------------------------------------------------------------------+
+
+// Global variables
+double previousCandleClose;
+double previousCandleHigh;
+double previousCandleLow;
+
+// Initialization function
+int OnInit()
+{
+    // Initialize previous candle values
+    previousCandleClose = 0;
+    previousCandleHigh = 0;
+    previousCandleLow = 0;
+
+    return(INIT_SUCCEEDED);
+}
+
+// Deinitialization function
+void OnDeinit(const int reason)
+{
+    // Perform any necessary cleanup here
+}
+
+// Main trading function
+void OnTick()
+{
+    // Get the current candle close price
+    double currentCandleClose = iClose(Symbol(), PERIOD_CURRENT, 0);
+    
+    // Check if the candle has closed
+    if(currentCandleClose != previousCandleClose)
+    {
+        // Calculate the dynamic deviation
+        double dynamicDeviation = currentCandleHigh - currentCandleLow;
+
+        // Perform trading decisions based on the unique trading algorithm
+        // ...
+
+        // Update previous candle values
+        previousCandleClose = currentCandleClose;
+        previousCandleHigh = iHigh(Symbol(), PERIOD_CURRENT, 1);
+        previousCandleLow = iLow(Symbol(), PERIOD_CURRENT, 1);
+    }
+}
+
+// Risk management function
+void RiskManagement()
+{
+    // Implement risk control and reduction logic
+    // ...
+
+    // Minimize losses and maximize gains
+    // ...
+}
+
+// Optimization function
+void OptimizeSettings()
+{
+    // Optimize the settings for stable monthly profit and constant growth
+    // ...
+}
+
+//+------------------------------------------------------------------+
